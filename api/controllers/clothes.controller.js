@@ -10,6 +10,8 @@ module.exports = {
 function getAllMyClothes (req, res) {
   const findObj = { user: res.locals.user._id }
   if (req.query.cloth_type) { findObj.cloth_type = req.query.cloth_type }
+  // ['primavera-verano', 'otoño-invierno'
+  if (req.query.season) { findObj.season = req.query.season }
   ClothesModel
     .find(findObj)
     .then((looks) => res.json(looks))
